@@ -1,6 +1,6 @@
 {
   "name": "__MSG_appName__",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
@@ -19,7 +19,8 @@
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
     },
-    "default_title": "pinkoi-csv"
+    "default_title": "pinkoi-csv",
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
@@ -28,6 +29,7 @@
       ],
       "js": [
         "bower_components/FileSaver/FileSaver.min.js",
+        "bower_components/async/lib/async.js",
         "scripts/contentscript.js"
       ],
       "run_at": "document_end",

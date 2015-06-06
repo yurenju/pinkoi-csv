@@ -2,7 +2,11 @@
   "name": "pinkoi-csv",
   "version": "0.0.0",
   "dependencies": {
-    "FileSaver": "*"
+    "FileSaver": "*",
+    "async": "~1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "async": "~1.0.0"
+  }
 }
