@@ -1,4 +1,4 @@
-// Generated on 2015-04-01 using generator-chrome-extension 0.3.1
+// Generated on 2015-06-06 using generator-chrome-extension 0.3.1
 'use strict';
 
 // # Globbing
@@ -314,6 +314,7 @@ module.exports = function (grunt) {
     'chromeManifest:dist',
     'useminPrepare',
     'concurrent:dist',
+    'cssmin',
     'concat',
     'uglify',
     'copy',
