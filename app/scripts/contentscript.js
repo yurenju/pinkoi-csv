@@ -59,8 +59,6 @@
     csv.push(header);
     var props = Object.keys(sheets);
     props.forEach(function(prop) {
-      var index = pageNames.indexOf(prop);
-      var type = pageDesc[index];
       sheets[prop].forEach(function(order) {
         var line = [];
         appendRow(line, [
@@ -68,7 +66,7 @@
           order['taxtitle'], order['taxid'], order['title'], order['quantity'],
           order['price'], order['subtotal'], order['payment'],
           order['handling'], order['payment_fee'], order['reward_deduct'],
-          order['message'], type
+          order['message'], prop
         ]);
         csv.push(line.join(','));
       });
@@ -81,9 +79,13 @@
 
     var tasks = pageNames.map(function(name, index) {
       return function(done) {
+        if (message.exclude.indexOf(name) !== -1) {
+          return done();
+        }
         chrome.runtime.sendMessage({fetching: pageDesc[index]});
         getSheet([], name, 1, function(allOrders) {
-          sheets[name] = allOrders;
+          var desc = pageDesc[index];
+          sheets[desc] = allOrders;
           done();
         });
       };

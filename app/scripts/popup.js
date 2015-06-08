@@ -7,8 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
   Array.prototype.forEach.call(buttons, function(button) {
     button.addEventListener('click', function() {
       console.log('fetching');
+      var checkboxes = document.getElementsByClassName('exclude-type');
+      var excludeTypes = [];
+      Array.prototype.forEach.call(checkboxes, function(box) {
+        if (box.checked) {
+          console.log(box.dataset.type);
+          excludeTypes.push(box.dataset.type);
+        }
+      });
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {type: button.dataset.type});
+        var msg = {type: button.dataset.type, exclude: excludeTypes};
+        chrome.tabs.sendMessage(tabs[0].id, msg);
       });
     });
   });

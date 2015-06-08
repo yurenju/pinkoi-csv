@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title></title>
   <!-- build:js scripts/popup.js -->
   <script src="scripts/popup.js"></script>
@@ -10,8 +11,13 @@
   <!-- endbuild -->
 </head>
 <body>
-<button class="fetch-orders" data-type="json">擷取訂單 (下載 json)</button>
-<button class="fetch-orders" data-type="csv">擷取訂單 (下載 csv)</button>
+<form>
+<div><button class="fetch-orders" data-type="json">擷取訂單 (下載 json)</button></div>
+<div><button class="fetch-orders" data-type="csv">擷取訂單 (下載 csv)</button></div>
+<div><label>
+  <input class="exclude-type" data-type="history" type="checkbox"> 不下載「已完成訂單」
+</label></div>
+</form>
 <div id="progress"></div>
 </body>
 </html>
