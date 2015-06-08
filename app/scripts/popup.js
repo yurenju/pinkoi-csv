@@ -2,11 +2,14 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('loaded');
-  var button = document.getElementById('fetch-orders');
-  button.addEventListener('click', function() {
-    console.log('fetching');
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, {});
+
+  var buttons = document.getElementsByClassName('fetch-orders');
+  Array.prototype.forEach.call(buttons, function(button) {
+    button.addEventListener('click', function() {
+      console.log('fetching');
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {type: button.dataset.type});
+      });
     });
   });
 
