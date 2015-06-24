@@ -79,7 +79,7 @@
 
     var tasks = pageNames.map(function(name, index) {
       return function(done) {
-        if (message.exclude.indexOf(name) !== -1) {
+        if (message.include.indexOf(name) === -1) {
           return done();
         }
         chrome.runtime.sendMessage({fetching: pageDesc[index]});
