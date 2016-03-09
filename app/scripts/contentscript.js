@@ -36,7 +36,7 @@
         }
       });
     });
-    var url = 'http://www.pinkoi.com/panel/order?p='+pageName+'&page='+count;
+    var url = 'https://www.pinkoi.com/panel/order?p='+pageName+'&page='+count;
     xhr.open('GET', url, true);
     xhr.send();
   }
@@ -53,7 +53,7 @@
 
   function getCSV(sheets) {
     var header = '"訂單編號","姓名","地址","電話","發票抬頭", "統編", "產品","數量",'+
-                  '"金額","小計金額","總金額","運費","金流手續費","折扣","備註",' +
+                  '"金額","小計金額","總金額","貨幣別","運費","金流手續費","折扣","備註",' +
                   '"分類"';
     var csv = [];
     csv.push(header);
@@ -64,9 +64,9 @@
         appendRow(line, [
           order['oid'], order['name'], order['address'], order['tel'],
           order['taxtitle'], order['taxid'], order['title'], order['quantity'],
-          order['price'], order['subtotal'], order['payment'],
-          order['handling'], order['payment_fee'], order['reward_deduct'],
-          order['message'], prop
+          order['price'], order['subtotal'], order['payment_total'],
+          order['payment_currency'].code, order['handling'], order['payment_fee'],
+          order['reward_deduct'], order['message'], prop
         ]);
         csv.push(line.join(','));
       });

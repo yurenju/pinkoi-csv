@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
   types.innerHTML = inputs.join(' ');
 
   document.getElementById('select-all').addEventListener('click', function() {
-    debugger
     var types = document.querySelectorAll('.include-type');
     Array.prototype.forEach.call(types, function(t) {
       t.checked = true;
